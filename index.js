@@ -49,10 +49,10 @@ function createBox({ parent, size, color }) {
   return elem;
 }
 
-const field = document.querySelector('#field');
+const container = document.querySelector('#container');
 
 const box = createBox({
-  parent: field,
+  parent: container,
   size: 400,
   color: 'azure',
 });
@@ -87,7 +87,7 @@ const wBox5 = createBox({
   color: 'black',
 });
 
-engine(box, field);
+engine(box, container);
 engine(wBox1, box);
 engine(wBox2, wBox1);
 engine(wBox3, wBox2);
