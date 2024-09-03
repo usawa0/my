@@ -52,44 +52,38 @@ const container = document.querySelector('#container');
 
 const box = createBox({
   parent: container,
-  size: 500,
+  size: 400,
   color: 'azure',
 });
 
 const wBox1 = createBox({
   parent: box,
-  size: 250,
+  size: 200,
   color: 'black',
 });
 
 const wBox2 = createBox({
   parent: wBox1,
-  size: 125,
+  size: 100,
   color: 'azure',
 });
 
 const wBox3 = createBox({
   parent: wBox2,
-  size: 60,
+  size: 50,
   color: 'black',
 });
 
 const wBox4 = createBox({
   parent: wBox3,
-  size: 30,
+  size: 25,
   color: 'azure',
 });
 
 const wBox5 = createBox({
   parent: wBox4,
-  size: 15,
+  size: 10,
   color: 'black',
-});
-
-const wBox6 = createBox({
-  parent: wBox4,
-  size: 7,
-  color: 'azure',
 });
 
 engine(wBox1, box);
@@ -97,4 +91,3 @@ engine(wBox2, wBox1);
 engine(wBox3, wBox2);
 engine(wBox4, wBox3);
 engine(wBox5, wBox4);
-engine(wBox6, wBox5);
