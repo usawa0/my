@@ -2,8 +2,9 @@ body {
   background-color: black;
 }
 
-#field {
-  position: relative;
-  width: 50vw;
-  height: 50vw;
+#container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
 }

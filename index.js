@@ -43,7 +43,6 @@ function createBox({ parent, size, color }) {
   elem.style.height = size + 'px';
   elem.style.background = color;
   elem.style.position = 'relative';
-
   parent.append(elem);
 
   return elem;
@@ -53,43 +52,49 @@ const container = document.querySelector('#container');
 
 const box = createBox({
   parent: container,
-  size: 400,
+  size: 500,
   color: 'azure',
 });
 
 const wBox1 = createBox({
   parent: box,
-  size: 200,
+  size: 250,
   color: 'black',
 });
 
 const wBox2 = createBox({
   parent: wBox1,
-  size: 100,
+  size: 125,
   color: 'azure',
 });
 
 const wBox3 = createBox({
   parent: wBox2,
-  size: 50,
+  size: 60,
   color: 'black',
 });
 
 const wBox4 = createBox({
   parent: wBox3,
-  size: 25,
+  size: 30,
   color: 'azure',
 });
 
 const wBox5 = createBox({
   parent: wBox4,
-  size: 10,
+  size: 15,
   color: 'black',
 });
 
-engine(box, container);
+const wBox6 = createBox({
+  parent: wBox4,
+  size: 7,
+  color: 'azure',
+});
+
 engine(wBox1, box);
 engine(wBox2, wBox1);
 engine(wBox3, wBox2);
 engine(wBox4, wBox3);
 engine(wBox5, wBox4);
+engine(wBox6, wBox5);
