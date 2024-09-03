@@ -1,20 +1,16 @@
 function moveDown(elem, step = 1) {
-  // console.log('down');
   elem.style.top = elem.offsetTop + step + 'px';
 }
 
 function moveRight(elem, step = 1) {
-  // console.log('right');
   elem.style.left = elem.offsetLeft + step + 'px';
 }
 
 function moveUp(elem, step = 1) {
   elem.style.top = elem.offsetTop - step + 'px';
-  // console.log('up');
 }
 
 function moveLeft(elem, step = 1) {
-  // console.log('left');
   elem.style.left = elem.offsetLeft - step + 'px';
 }
 
