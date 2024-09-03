@@ -14,7 +14,8 @@ function moveLeft(elem, step = 1) {
   elem.style.left = elem.offsetLeft - step + 'px';
 }
 
-function engine(elem, parent, ms = 10) {
+function engine(elem, ms = 10) {
+  const parent = elem.parentElement;
   const elemHeight = elem.clientHeight;
   const elemWidth = elem.clientWidth;
   const parentHeight = parent.clientHeight - elemHeight;
@@ -36,58 +37,34 @@ function engine(elem, parent, ms = 10) {
   }, 10);
 }
 
-function createBox({ parent, size, color }) {
+function createBox(parent) {
+  // const parent = container.lastElementChild;
   const elem = document.createElement('div');
+  const elemSize = parent.clientHeight / 2;
+  const parentColor = getComputedStyle(parent).backgroundColor;
+  const elemColor = parentColor === 'rgb(240, 255, 255)' ? 'black' : 'azure';
 
-  elem.style.width = size + 'px';
-  elem.style.height = size + 'px';
-  elem.style.background = color;
+  elem.style.background = elemColor;
+  elem.style.width = elemSize + 'px';
+  elem.style.height = elemSize + 'px';
   elem.style.position = 'relative';
+
   parent.append(elem);
 
   return elem;
 }
 
 const container = document.querySelector('#container');
+const box = document.querySelector('#box');
 
-const box = createBox({
-  parent: container,
-  size: 400,
-  color: 'azure',
-});
+const wBox1 = createBox(box);
+const wBox2 = createBox(wBox1);
+const wBox3 = createBox(wBox2);
+const wBox4 = createBox(wBox3);
+const wBox5 = createBox(wBox4);
 
-const wBox1 = createBox({
-  parent: box,
-  size: 200,
-  color: 'black',
-});
-
-const wBox2 = createBox({
-  parent: wBox1,
-  size: 100,
-  color: 'azure',
-});
-
-const wBox3 = createBox({
-  parent: wBox2,
-  size: 50,
-  color: 'black',
-});
-
-const wBox4 = createBox({
-  parent: wBox3,
-  size: 25,
-  color: 'azure',
-});
-
-const wBox5 = createBox({
-  parent: wBox4,
-  size: 10,
-  color: 'black',
-});
-
-engine(wBox1, box);
-engine(wBox2, wBox1);
-engine(wBox3, wBox2);
-engine(wBox4, wBox3);
-engine(wBox5, wBox4);
+engine(wBox1);
+engine(wBox2);
+engine(wBox3);
+engine(wBox4);
+engine(wBox5);

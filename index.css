@@ -8,3 +8,9 @@ body {
   left: 0;
   display: flex;
 }
+#box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background-color: azure;
+}
