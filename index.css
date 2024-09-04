@@ -2,12 +2,6 @@ body {
   background-color: black;
 }
 
-#container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-}
 #box {
   position: relative;
   width: 500px;

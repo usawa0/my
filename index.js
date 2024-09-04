@@ -34,10 +34,21 @@ function engine(elem, ms = 10) {
     } else if (elem.offsetTop <= 0) {
       moveLeft(elem);
     }
-  }, 10);
+  }, ms);
 }
 
-function createBox(parent) {
+function createBox() {
+  const elem = document.createElement('div');
+
+  elem.style.background = 'azure';
+  elem.style.width = 500 + 'px';
+  elem.style.height = 500 + 'px';
+  elem.style.position = 'relative';
+
+  document.body.append(elem);
+}
+
+function createWrappedBox(parent) {
   // const parent = container.lastElementChild;
   const elem = document.createElement('div');
   const elemSize = parent.clientHeight / 2;
@@ -54,17 +65,30 @@ function createBox(parent) {
   return elem;
 }
 
-const container = document.querySelector('#container');
+document.onclick = (event) => {
+  console.log(event.target);
+  console.log(event.target.tagName);
+
+  if (event.target.tagName === 'BODY') {
+    createBox();
+    return;
+  }
+  if (event.target.tagName === 'DIV' && !event.target.firstElementChild) {
+    engine(createWrappedBox(event.target));
+    return;
+  }
+};
+
 const box = document.querySelector('#box');
 
-const wBox1 = createBox(box);
-const wBox2 = createBox(wBox1);
-const wBox3 = createBox(wBox2);
-const wBox4 = createBox(wBox3);
-const wBox5 = createBox(wBox4);
+const wBox1 = createWrappedBox(box);
+const wBox2 = createWrappedBox(wBox1);
+const wBox3 = createWrappedBox(wBox2);
+const wBox4 = createWrappedBox(wBox3);
+const wBox5 = createWrappedBox(wBox4);
 
-engine(wBox1);
-engine(wBox2);
-engine(wBox3);
-engine(wBox4);
-engine(wBox5);
+const wBoxes = [wBox1, wBox2, wBox3, wBox4, wBox5];
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => engine(wBoxes[i]), i * 1000);
+}
