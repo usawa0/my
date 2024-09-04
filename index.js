@@ -40,6 +40,7 @@ function engine(elem, ms = 10) {
 function createBox() {
   const elem = document.createElement('div');
 
+  elem.className = 'child';
   elem.style.background = 'azure';
   elem.style.width = 500 + 'px';
   elem.style.height = 500 + 'px';
@@ -66,8 +67,9 @@ function createWrappedBox(parent) {
 }
 
 document.onclick = (event) => {
-  console.log(event.target);
-  console.log(event.target.tagName);
+  // console.log(event.target);
+  // console.log(event.target.tagName);
+  console.log(event.target.firstElementChild);
 
   if (event.target.tagName === 'BODY') {
     createBox();
